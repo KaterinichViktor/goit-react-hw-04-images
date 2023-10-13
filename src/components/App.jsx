@@ -65,6 +65,8 @@ const App = () => {
     setLargeImageURL('');
   };
 
+  const showLoadMoreButton = images.length >= 12;
+
   return (
     <div
       style={{
@@ -93,7 +95,9 @@ const App = () => {
         />
       )}
 
-      {images.length > 0 && !isLoading && <Button onClick={fetchMoreImages} />}
+      {showLoadMoreButton && !isLoading && (
+        <Button onClick={fetchMoreImages} />
+      )}
 
       {showModal && (
         <Modal src={largeImageURL} alt="Large Image" onClose={closeModal} />
